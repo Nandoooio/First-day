@@ -1,5 +1,9 @@
-<html>
+<!DOCTYPE html>
+<html lang="ar">
   <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اليوم الأول في الجامعة</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Amiri:wght@700&display=swap');
 
@@ -68,7 +72,6 @@
       }
     </style>
   </head>
-  
   <body>
     <h1>ياترى أول يوم ليك في الجامعة السنة دي هيكون ازاي؟ 🤔😂</h1>
     <button onclick="generateDay()">ابدأ</button>
@@ -92,17 +95,6 @@
       </div>
     </div>
 
-    <script>
-      function generateDay() {
-        google.script.run.withSuccessHandler(function(data) {
-          document.getElementById('wakeUp').innerHTML = data[0];
-          document.getElementById('enterUniversity').innerHTML = data[1];
-          document.getElementById('enterLecture').innerHTML = data[2];
-          document.getElementById('afterUniversity').innerHTML = data[3];
-          
-          document.getElementById('results').style.display = 'block';
-        }).getRandomSentences();
-      }
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
