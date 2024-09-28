@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>اليوم الأول في الجامعة</title>
+    <title>أول يوم في الجامعة</title>
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Amiri:wght@700&display=swap');
 
@@ -72,6 +72,7 @@
       }
     </style>
   </head>
+  
   <body>
     <h1>ياترى أول يوم ليك في الجامعة السنة دي هيكون ازاي؟ 🤔😂</h1>
     <button onclick="generateDay()">ابدأ</button>
@@ -95,6 +96,31 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+      // Load JSON and select random data
+      function generateDay() {
+        fetch('path/to/your/json/file.json')  // استبدل بـ المسار الصحيح لملف الـ JSON
+          .then(response => response.json())
+          .then(data => {
+            // اختيار جمل عشوائية من الأعمدة
+            const wakeUp = data[Math.floor(Math.random() * data.length)]["تفتح عينك وتبص على الساعة… وتقول: لسه خمس دقايق."];
+            const enterUniversity = data[Math.floor(Math.random() * data.length)]["هو أنا في الكلية ولا في سوق الجمعة؟"];
+            const enterLecture = data[Math.floor(Math.random() * data.length)]["ده المدرج ولا محطة قطار؟ الناس كلها قاعدة ليه كأنهم مستنيين حاجة كبيرة؟"];
+            const afterUniversity = data[Math.floor(Math.random() * data.length)]["وأخيرًا! الحرية... بس لمدة كام ساعة."];
+
+            // عرض الجمل في الـ HTML
+            document.getElementById('wakeUp').innerHTML = wakeUp;
+            document.getElementById('enterUniversity').innerHTML = enterUniversity;
+            document.getElementById('enterLecture').innerHTML = enterLecture;
+            document.getElementById('afterUniversity').innerHTML = afterUniversity;
+
+            // إظهار قسم النتائج
+            document.getElementById('results').style.display = 'block';
+          })
+          .catch(error => {
+            console.error('Error loading JSON:', error);
+          });
+      }
+    </script>
   </body>
 </html>
