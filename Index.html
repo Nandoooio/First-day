@@ -1,0 +1,108 @@
+<html>
+  <head>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@600&family=Amiri:wght@700&display=swap');
+
+      body {
+        font-family: 'Cairo', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f0f0f0;
+        margin: 0;
+        text-align: center;
+        flex-direction: column;
+      }
+
+      h1 {
+        font-size: 32px;
+        font-family: 'Amiri', serif;
+        color: #333;
+        margin-bottom: 20px;
+      }
+
+      button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 15px 30px;
+        border: none;
+        border-radius: 5px;
+        font-size: 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-family: 'Cairo', sans-serif;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+
+      .result-section {
+        display: none;
+        margin-top: 20px;
+        width: 80%;
+        max-width: 600px;
+        text-align: left;
+      }
+
+      .result {
+        background-color: white;
+        padding: 15px;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      }
+
+      .result-title {
+        font-weight: bold;
+        font-family: 'Cairo', sans-serif;
+        font-size: 22px;
+        margin-bottom: 5px;
+      }
+
+      .result div {
+        font-family: 'Amiri', serif;
+        font-size: 20px;
+        color: #444;
+      }
+    </style>
+  </head>
+  
+  <body>
+    <h1>ياترى أول يوم ليك في الجامعة السنة دي هيكون ازاي؟ 🤔😂</h1>
+    <button onclick="generateDay()">ابدأ</button>
+
+    <div class="result-section" id="results">
+      <div class="result">
+        <div class="result-title">أول ما تصحى من النوم:</div>
+        <div id="wakeUp"></div>
+      </div>
+      <div class="result">
+        <div class="result-title">رد فعلك أول ما تدخل الجامعة:</div>
+        <div id="enterUniversity"></div>
+      </div>
+      <div class="result">
+        <div class="result-title">لما تدخل المدرج:</div>
+        <div id="enterLecture"></div>
+      </div>
+      <div class="result">
+        <div class="result-title">بعد ما تروح من الجامعة:</div>
+        <div id="afterUniversity"></div>
+      </div>
+    </div>
+
+    <script>
+      function generateDay() {
+        google.script.run.withSuccessHandler(function(data) {
+          document.getElementById('wakeUp').innerHTML = data[0];
+          document.getElementById('enterUniversity').innerHTML = data[1];
+          document.getElementById('enterLecture').innerHTML = data[2];
+          document.getElementById('afterUniversity').innerHTML = data[3];
+          
+          document.getElementById('results').style.display = 'block';
+        }).getRandomSentences();
+      }
+    </script>
+  </body>
+</html>
